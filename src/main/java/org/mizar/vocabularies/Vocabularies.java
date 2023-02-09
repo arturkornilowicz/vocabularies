@@ -35,13 +35,14 @@ public class Vocabularies extends LinkedList<Vocabulary> {
                     } else {
                         switch (kind) {
                             case O:
-                                vocabulary.add(new SymbolWithPriority(kind, tab[0].substring(1), Integer.parseInt(tab[1])));
+                                vocabulary.add(new Symbol(kind, tab[0].substring(1), Integer.parseInt(tab[1])));
                                 break;
                             case R:
                                 vocabulary.add(new Symbol(kind, tab[0].substring(1), tab[1]));
                                 break;
                             default:
                                 System.out.println("Wrong line " + line);
+                                throw new RuntimeException("Wrong line in " + fileName + " file.");
                         }
                     }
                 }
@@ -83,6 +84,6 @@ public class Vocabularies extends LinkedList<Vocabulary> {
                 return result;
             }
         }
-        return null;
+        throw new RuntimeException("Symbol " + representation + " not found.");
     }
 }

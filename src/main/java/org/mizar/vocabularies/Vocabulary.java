@@ -21,7 +21,7 @@ public class Vocabulary extends LinkedList<Symbol> {
     }
 
     public Symbol findSymbol(String representation) {
-        int i = indexOf(new Symbol(null,representation));
+        int i = indexOf(new Symbol(null,representation,-1));
         return i < 0 ? null : get(i);
     }
 }
