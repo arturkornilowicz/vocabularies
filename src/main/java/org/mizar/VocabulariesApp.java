@@ -32,5 +32,7 @@ public class VocabulariesApp
 
         findDoubleRepresentations();
 
+        System.out.println("\n\n" + vocabularies.findVocabularyWithSymbol("overlap"));
+
     }
 }

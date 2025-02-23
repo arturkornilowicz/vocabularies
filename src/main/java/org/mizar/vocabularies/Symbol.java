@@ -3,7 +3,6 @@ package org.mizar.vocabularies;
 import lombok.*;
 
 @AllArgsConstructor
-@EqualsAndHashCode(of={"representation"})
 @Getter
 
 public class Symbol {
@@ -30,5 +29,19 @@ public class Symbol {
     @Override
     public String toString() {
         return kind + representation + (representation2 == null ? "" : " " + representation2) + (kind == SymbolKind.O ? " " + priority : "");
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+        Symbol symbol = (Symbol) obj;
+        return
+                this.getRepresentation().equals(symbol.getRepresentation()) ||
+                        (symbol.getRepresentation2() != null && this.getRepresentation().equals(symbol.getRepresentation2())) ||
+                        (this.getRepresentation2() != null && this.getRepresentation2().equals(symbol.getRepresentation())) ||
+                        (this.getRepresentation2() != null && symbol.getRepresentation2() != null && this.getRepresentation2().equals(symbol.getRepresentation2()))
+                ;
     }
 }
